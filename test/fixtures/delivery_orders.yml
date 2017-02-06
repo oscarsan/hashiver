@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  state: MyString
+  display_name: MyString
+  pack_operation_ids: MyString
+
+two:
+  name: MyString
+  state: MyString
+  display_name: MyString
+  pack_operation_ids: MyString
