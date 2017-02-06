@@ -1,17 +1,25 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Odoo Id</th>
     <th>State</th>
     <th>Display Name</th>
+    <th>Origin</th>
     <th>Pack Operation Ids</th>
+    <th>Id</th>
   </tr>
 
   <% @delivery_orders.each do |delivery_order| %>
     <tr>
       <td><%= delivery_order.name %></td>
+      <td><%= delivery_order.odoo_id %></td>
       <td><%= delivery_order.state %></td>
-      <td><%= display_name.state %></td>
-      <td><%= pack_operation_ids.state %></td>
+      <td><%= delivery_order.display_name %></td>
+      <td><%= delivery_order.origin %></td>
+      <td><%= delivery_order.pack_operation_ids %></td>
+      <td><%= delivery_order.id %></td>
+      <td><%= link_to 'Show', delivery_order_path(delivery_order) %></td>
+      <td><%= link_to 'Edit', edit_delivery_order_path(delivery_order) %></td>    
     </tr>
   <% end %>
 </table>
