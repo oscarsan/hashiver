@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>State</th>
+    <th>Display Name</th>
+    <th>Pack Operation Ids</th>
+  </tr>
+
+  <% @delivery_orders.each do |delivery_order| %>
+    <tr>
+      <td><%= delivery_order.name %></td>
+      <td><%= delivery_order.state %></td>
+      <td><%= display_name.state %></td>
+      <td><%= pack_operation_ids.state %></td>
+    </tr>
+  <% end %>
+</table>
