@@ -4,14 +4,20 @@ include Odoo::Import
 
 namespace :import do
   desc 'imports once all the delivery orders'
+  task delivery_all: :environment do
+    import_all()
+  end
+
+  desc 'imports once 1 devlivery order with id'
+  odoo_id = ENV['odoo_id']
   task delivery: :environment do
-    import_delivery()
+    import_delivery(odoo_id.to_i)
   end
 
   desc 'imports once all the delivery orders'
-  task product_loop: :environment do
+  task delivery_loop: :environment do
     loop do
-      import_delivery()
+      import_all()
       sleep 2
     end
   end
