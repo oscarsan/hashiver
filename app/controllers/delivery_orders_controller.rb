@@ -16,6 +16,7 @@ class DeliveryOrdersController < ApplicationController
     @delivery_order = DeliveryOrder.find(params[:id])
 
     if @delivery_order.process_order
+      @delivery_order.update_model
       redirect_to @delivery_order
     else
       render 'edit'

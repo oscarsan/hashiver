@@ -7,4 +7,9 @@ class DeliveryOrder < ApplicationRecord
       return true
     end
 
+    def update_model
+      import_delivery([self['odoo_id'].to_i])
+      return true
+    end
+
 end
