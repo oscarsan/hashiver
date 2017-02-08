@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206173404) do
+ActiveRecord::Schema.define(version: 20170208204239) do
 
   create_table "delivery_orders", force: :cascade do |t|
     t.string   "name"
     t.string   "state"
     t.string   "display_name"
     t.string   "pack_operation_ids"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "origin"
     t.integer  "odoo_id"
+    t.string   "carrier_tracking_ref"
   end
 
 end

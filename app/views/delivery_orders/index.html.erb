@@ -7,6 +7,7 @@
     <th>Origin</th>
     <th>Pack Operation Ids</th>
     <th>Id</th>
+    <th>Tracking Ref</th>
   </tr>
 
   <% @delivery_orders.each do |delivery_order| %>
@@ -18,6 +19,7 @@
       <td><%= delivery_order.origin %></td>
       <td><%= delivery_order.pack_operation_ids %></td>
       <td><%= delivery_order.id %></td>
+      <td><%= delivery_order.carrier_tracking_ref %></td>
       <td><%= link_to 'Show', delivery_order_path(delivery_order) %></td>
       <td><%= link_to 'Edit', edit_delivery_order_path(delivery_order) %></td>    
     </tr>

@@ -25,7 +25,8 @@ namespace :import do
   desc 'change the state of the order'
   task process: :environment do
     odoo_id = ENV['odoo_id']
-    puts "the odoo id is #{odoo_id}"
-    process_delivery_order(odoo_id)
+    carrier_tracking_ref = ENV['carrier_tracking_ref']
+    puts "the odoo id is #{odoo_id} with reference #{carrier_tracking_ref}"
+    process_delivery_order(odoo_id, carrier_tracking_ref)
   end
 end

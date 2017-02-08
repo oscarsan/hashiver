@@ -34,7 +34,7 @@ module Odoo
 
           delivery_orders = models.execute_kw(DB, uid, PASSWORD,
               'stock.picking', 'read',
-              [odoo_ids], {'fields': ['name', 'state', 'display_name', 'origin', 'pack_operation_ids']})
+              [odoo_ids], {'fields': ['name', 'state', 'display_name', 'origin', 'pack_operation_ids', 'carrier_tracking_ref']})
           puts delivery_orders
           delivery_orders.map { |e|
             d = DeliveryOrder.find_or_create_by(odoo_id: e["id"])
@@ -47,12 +47,18 @@ module Odoo
         end
     end
 
-    def process_delivery_order(odoo_id)
+    def process_delivery_order(odoo_id, carrier_tracking_ref)
       begin
 
         common = XMLRPC::Client.new2("#{URL}/xmlrpc/2/common")
         uid = common.call('authenticate', DB, USERNAME, PASSWORD, {})
         models = XMLRPC::Client.new2("#{URL}/xmlrpc/2/object").proxy
+
+        trackref = models.execute_kw(
+                DB, uid, PASSWORD, 'stock.picking', 'write',
+                [[odoo_id.to_i], {
+                  carrier_tracking_ref: carrier_tracking_ref
+                  }])
 
         result = models.execute_kw(
                 DB, uid, PASSWORD,
